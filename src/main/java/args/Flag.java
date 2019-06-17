@@ -17,4 +17,8 @@ public class Flag {
     public String getName() {
         return flag;
     }
+
+    public boolean getDefaultValue() {
+        return false;
+    }
 }

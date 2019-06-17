@@ -24,4 +24,11 @@ public class ArgsTest {
         schema.addFlag("p", "string");
         assertEquals("string", schema.getFlag("p").getType());
     }
+
+    @Test
+    public void boolean_default_value() {
+        Schema schema = new Schema();
+        schema.addFlag("l", "boolean");
+        assertEquals(false, schema.getFlag("l").getDefaultValue());
+    }
 }
