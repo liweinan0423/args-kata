@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ArgsTest {
+public class SchemaTest {
     @Test
     public void boolean_flag() {
         Schema schema = new Schema();
