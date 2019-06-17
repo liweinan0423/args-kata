@@ -31,4 +31,11 @@ public class ArgsTest {
         schema.addFlag("l", "boolean");
         assertEquals(false, schema.getFlag("l").getDefaultValue());
     }
+
+    @Test
+    public void integer_flag() {
+        Schema schema = new Schema();
+        schema.addFlag("p", "integer");
+        assertEquals("integer", schema.getFlag("p").getType());
+    }
 }
