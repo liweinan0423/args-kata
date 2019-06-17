@@ -3,7 +3,10 @@ package args;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.toList;
 
 public class Schema {
     private Map<String, Flag> flagMap = new HashMap<>();
@@ -18,5 +21,9 @@ public class Schema {
 
     public Collection<Flag> flags() {
         return flagMap.values();
+    }
+
+    List<Arg> defaultValues() {
+        return flags().stream().map(Flag::getDefaultValue).map(Arg::new).collect(toList());
     }
 }

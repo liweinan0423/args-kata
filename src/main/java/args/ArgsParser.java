@@ -3,8 +3,6 @@ package args;
 import java.util.Collections;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 public class ArgsParser {
     private Schema schema;
 
@@ -27,12 +25,8 @@ public class ArgsParser {
         if (args.length() > 0) {
             return parseArg(args);
         } else {
-            return defaultValue();
+            return schema.defaultValues();
         }
-    }
-
-    private List<Arg> defaultValue() {
-        return schema.flags().stream().map(Flag::getDefaultValue).map(Arg::new).collect(toList());
     }
 
 }
