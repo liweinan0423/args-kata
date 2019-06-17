@@ -12,6 +12,13 @@ public class ArgsTest {
     }
 
     @Test
+    public void unknown_flag() {
+        Schema schema = new Schema();
+        schema.addFlag("l", "boolean");
+        assertEquals(null, schema.getFlag("x"));
+    }
+
+    @Test
     public void string_flag() {
         Schema schema = new Schema();
         schema.addFlag("p", "string");
