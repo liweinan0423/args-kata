@@ -19,9 +19,8 @@ public class ArgsParser {
             return Collections.singletonList(new Arg(true));
         } else if (flag.getType().equals("integer")) {
             return Collections.singletonList(new Arg(Integer.valueOf(args.split(" ")[1])));
-        } else {
-            return Collections.singletonList(new Arg(args.split(" ")[1]));
         }
+        return Collections.singletonList(new Arg(args.split(" ")[1]));
     }
 
     public List<Arg> parse(String args) {
