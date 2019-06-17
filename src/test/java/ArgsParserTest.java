@@ -23,4 +23,13 @@ public class ArgsParserTest {
         List<Arg> parsedArgs = new ArgsParser(schema).parse("");
         assertEquals(false, parsedArgs.get(0).getValue());
     }
+
+    @Test
+    public void parse_integer_arg() {
+        Schema schema = new Schema();
+        schema.addFlag("p", "integer", 0);
+        ArgsParser parser = new ArgsParser(schema);
+        List<Arg> parsed = parser.parse("-p 8080");
+        assertEquals(8080, parsed.get(0).getValue());
+    }
 }
