@@ -1,6 +1,5 @@
 package args;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class ArgsParser {
         this.schema = schema;
     }
 
-    private List<Arg> parse2(String args) {
+    private List<Arg> parseArg(String args) {
         String flagName = args.split(" ")[0].substring(1);
         Flag flag = schema.getFlag(flagName);
         if (flag.getType().equals("boolean")) {
@@ -27,7 +26,7 @@ public class ArgsParser {
 
     public List<Arg> parse(String args) {
         if (args.length() > 0) {
-            return parse2(args);
+            return parseArg(args);
         } else {
             return defaultValue();
         }
