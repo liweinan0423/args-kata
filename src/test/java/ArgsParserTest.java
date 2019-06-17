@@ -1,3 +1,4 @@
+import args.Arg;
 import args.ArgsParser;
 import args.Schema;
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class ArgsParserTest {
     public void parse_boolean_arg() {
         Schema schema = new Schema();
         schema.addFlag("l", "boolean", false);
-        List<Object> parsedArgs = new ArgsParser(schema).parse("-l");
-        assertEquals(true, parsedArgs.get(0));
+        List<Arg> parsedArgs = new ArgsParser(schema).parse("-l");
+        assertEquals(true, parsedArgs.get(0).getValue());
     }
 }

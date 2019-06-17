@@ -7,7 +7,7 @@ public class ArgsParser {
     public ArgsParser(Schema schema) {
     }
 
-    public List<Object> parse(String s) {
-        return Arrays.asList(true);
+    public List<Arg> parse(String s) {
+        return Arrays.asList(new Arg());
     }
 }
