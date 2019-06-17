@@ -8,6 +8,11 @@ public class ArgsParser {
     }
 
     public List<Arg> parse(String s) {
-        return Arrays.asList(new Arg());
+        if ("-l".equals(s)) {
+            return Arrays.asList(new Arg(true));
+        } else {
+            return Arrays.asList(new Arg(false));
+
+        }
     }
 }
