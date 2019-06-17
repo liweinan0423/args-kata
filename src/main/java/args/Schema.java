@@ -1,6 +1,7 @@
 package args;
 
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,5 +14,9 @@ public class Schema {
 
     public Flag getFlag(String flag) {
         return flagMap.get(flag);
+    }
+
+    public Collection<Flag> flags() {
+        return flagMap.values();
     }
 }

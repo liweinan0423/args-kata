@@ -3,6 +3,8 @@ package args;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class ArgsParser {
     private Schema schema;
 
@@ -10,7 +12,7 @@ public class ArgsParser {
         this.schema = schema;
     }
 
-    public List<Arg> parse(String args) {
+    private List<Arg> parse2(String args) {
         if ("-l".equals(args)) {
             return Arrays.asList(new Arg(true));
         } else if (args.startsWith("-p")) {
@@ -24,4 +26,17 @@ public class ArgsParser {
             }
         }
     }
+
+    public List<Arg> parse(String args) {
+        if (args.length() > 0) {
+            return parse2(args);
+        } else {
+            return defaultValue();
+        }
+    }
+
+    private List<Arg> defaultValue() {
+        return schema.flags().stream().map(f -> f.getDefaultValue()).map(Arg::new).collect(toList());
+    }
+
 }
