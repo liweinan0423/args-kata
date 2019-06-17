@@ -14,10 +14,6 @@ public class Flag {
         return type;
     }
 
-    public String getName() {
-        return flag;
-    }
-
     public boolean getDefaultValue() {
         return false;
     }
