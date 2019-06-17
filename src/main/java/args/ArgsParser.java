@@ -10,11 +10,11 @@ public class ArgsParser {
         this.schema = schema;
     }
 
-    public List<Arg> parse(String s) {
-        if ("-l".equals(s)) {
+    public List<Arg> parse(String args) {
+        if ("-l".equals(args)) {
             return Arrays.asList(new Arg(true));
-        } else if (s.startsWith("-p")) {
-            return Arrays.asList(new Arg(Integer.valueOf(s.split(" ")[1])));
+        } else if (args.startsWith("-p")) {
+            return Arrays.asList(new Arg(Integer.valueOf(args.split(" ")[1])));
         } else {
             Flag integerFlag = schema.getFlag("p");
             if (integerFlag != null) {
