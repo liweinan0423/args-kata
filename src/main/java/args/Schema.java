@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Schema {
-    private List<Flag> flags = new ArrayList<Flag>();
+    private List<Flag> flags = new ArrayList<>();
 
     public void addFlag(String flag, String type) {
         this.flags.add(new Flag(flag, type));
