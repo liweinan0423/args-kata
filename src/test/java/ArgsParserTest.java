@@ -48,4 +48,12 @@ public class ArgsParserTest {
         List<Arg> parsed = new ArgsParser(schema).parse("-d /var/logs/");
         assertEquals("/var/logs/", parsed.get(0).getValue());
     }
+
+    @Test
+    public void parse_default_value_of_string_arg() {
+        Schema schema = new Schema();
+        schema.addFlag("d", "string", "");
+        List<Arg> parsed = new ArgsParser(schema).parse("");
+        assertEquals("", parsed.get(0).getValue());
+    }
 }
