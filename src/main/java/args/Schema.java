@@ -1,13 +1,17 @@
 package args;
 
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Schema {
-    public void addFlag(String flag, String type) {
+    private List<Flag> flags = new ArrayList<Flag>();
 
+    public void addFlag(String flag, String type) {
+        this.flags.add(new Flag(flag, type));
     }
 
     public Flag getFlag(String flag) {
-        return new Flag();
+        return flags.stream().filter(f -> f.getName().equals(flag)).findFirst().get();
     }
 }

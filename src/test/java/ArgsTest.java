@@ -10,4 +10,11 @@ public class ArgsTest {
         schema.addFlag("l", "boolean");
         assertEquals("boolean", schema.getFlag("l").getType());
     }
+
+    @Test
+    public void string_flag() {
+        Schema schema = new Schema();
+        schema.addFlag("p", "string");
+        assertEquals("string", schema.getFlag("p").getType());
+    }
 }
