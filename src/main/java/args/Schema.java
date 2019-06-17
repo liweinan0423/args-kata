@@ -1,7 +1,6 @@
 package args;
 
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,11 +18,7 @@ public class Schema {
         return flagMap.get(flag);
     }
 
-    public Collection<Flag> flags() {
-        return flagMap.values();
-    }
-
-    List<Arg> defaultValues() {
-        return flags().stream().map(Flag::getDefaultValue).map(Arg::new).collect(toList());
+    List<Object> defaultValues() {
+        return flagMap.values().stream().map(Flag::getDefaultValue).collect(toList());
     }
 }
