@@ -25,19 +25,19 @@ public class ArgsParserTest {
     }
 
     @Test
-    public void parse_default_value_of_integer_arg() {
-        Schema schema = new Schema();
-        schema.addFlag("p", "integer", 80);
-        List<Arg> parsed = new ArgsParser(schema).parse("");
-        assertEquals(80, parsed.get(0).getValue());
-    }
-
-    @Test
     public void parse_integer_arg() {
         Schema schema = new Schema();
         schema.addFlag("p", "integer", 0);
         ArgsParser parser = new ArgsParser(schema);
         List<Arg> parsed = parser.parse("-p 8080");
         assertEquals(8080, parsed.get(0).getValue());
+    }
+
+    @Test
+    public void parse_default_value_of_integer_arg() {
+        Schema schema = new Schema();
+        schema.addFlag("p", "integer", 80);
+        List<Arg> parsed = new ArgsParser(schema).parse("");
+        assertEquals(80, parsed.get(0).getValue());
     }
 }
