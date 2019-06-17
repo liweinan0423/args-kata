@@ -1,6 +1,7 @@
 package args;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -13,17 +14,14 @@ public class ArgsParser {
     }
 
     private List<Arg> parse2(String args) {
-        if ("-l".equals(args)) {
-            return Arrays.asList(new Arg(true));
-        } else if (args.startsWith("-p")) {
-            return Arrays.asList(new Arg(Integer.valueOf(args.split(" ")[1])));
+        String flagName = args.split(" ")[0].substring(1);
+        Flag flag = schema.getFlag(flagName);
+        if (flag.getType().equals("boolean")) {
+            return Collections.singletonList(new Arg(true));
+        } else if (flag.getType().equals("integer")) {
+            return Collections.singletonList(new Arg(Integer.valueOf(args.split(" ")[1])));
         } else {
-            Flag integerFlag = schema.getFlag("p");
-            if (integerFlag != null) {
-                return Arrays.asList(new Arg(integerFlag.getDefaultValue()));
-            } else {
-                return Arrays.asList(new Arg(false));
-            }
+            return Collections.singletonList(new Arg(args.split(" ")[1]));
         }
     }
 
@@ -36,7 +34,7 @@ public class ArgsParser {
     }
 
     private List<Arg> defaultValue() {
-        return schema.flags().stream().map(f -> f.getDefaultValue()).map(Arg::new).collect(toList());
+        return schema.flags().stream().map(Flag::getDefaultValue).map(Arg::new).collect(toList());
     }
 
 }
