@@ -13,7 +13,7 @@ public class ArgsParserTest {
         Schema schema = new Schema();
         schema.addFlag("l", "boolean", false);
         List<Arg> parsedArgs = new ArgsParser(schema).parse("-l");
-        assertEquals(true, parsedArgs.get(0).getValue());
+        assertEquals(true, parsedArgs.get(0).value());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class ArgsParserTest {
         Schema schema = new Schema();
         schema.addFlag("l", "boolean", false);
         List<Arg> parsedArgs = new ArgsParser(schema).parse("");
-        assertEquals(false, parsedArgs.get(0).getValue());
+        assertEquals(false, parsedArgs.get(0).value());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ArgsParserTest {
         schema.addFlag("p", "integer", 0);
         ArgsParser parser = new ArgsParser(schema);
         List<Arg> parsed = parser.parse("-p 8080");
-        assertEquals(8080, parsed.get(0).getValue());
+        assertEquals(8080, parsed.get(0).value());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class ArgsParserTest {
         Schema schema = new Schema();
         schema.addFlag("p", "integer", 80);
         List<Arg> parsed = new ArgsParser(schema).parse("");
-        assertEquals(80, parsed.get(0).getValue());
+        assertEquals(80, parsed.get(0).value());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ArgsParserTest {
         Schema schema = new Schema();
         schema.addFlag("d", "string", "");
         List<Arg> parsed = new ArgsParser(schema).parse("-d /var/logs/");
-        assertEquals("/var/logs/", parsed.get(0).getValue());
+        assertEquals("/var/logs/", parsed.get(0).value());
     }
 
     @Test
@@ -54,6 +54,6 @@ public class ArgsParserTest {
         Schema schema = new Schema();
         schema.addFlag("d", "string", "");
         List<Arg> parsed = new ArgsParser(schema).parse("");
-        assertEquals("", parsed.get(0).getValue());
+        assertEquals("", parsed.get(0).value());
     }
 }

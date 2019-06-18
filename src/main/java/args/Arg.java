@@ -8,7 +8,7 @@ public class Arg {
         this.value = value;
     }
 
-    public Object getValue() {
+    public Object value() {
         return value;
     }
 }
