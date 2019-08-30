@@ -89,13 +89,7 @@ class Args {
                 case "":
                     return parseBoolean();
                 case "#": {
-                    String[] tokens = this.args.split(" ");
-                    if (tokens.length == 2) {
-                        return Integer.parseInt(tokens[1]);
-                    } else if (tokens.length == 1) {
-                        return -1;
-                    }
-                    break;
+                    return parseNumber();
                 }
                 case "*": {
                     String[] tokens = this.args.split(" ");
@@ -111,6 +105,16 @@ class Args {
             return null;
         }
         throw new RuntimeException();
+    }
+
+    private Object parseNumber() {
+        String[] tokens = this.args.split(" ");
+        if (tokens.length == 2) {
+            return Integer.parseInt(tokens[1]);
+        } else if (tokens.length == 1) {
+            return -1;
+        }
+        return null;
     }
 
     private Object parseBoolean() {
