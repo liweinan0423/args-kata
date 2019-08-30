@@ -82,25 +82,31 @@ class Args {
         String schemaName = this.schema.substring(0, 1);
         String schemaType = this.schema.substring(1);
         if (schemaName.equals(name)) {
-            if (schemaType.equals("")) {
-                if (this.args.length() == 2) {
-                    return true;
-                } else if ("".equals(this.args)) {
-                    return false;
+            switch (schemaType) {
+                case "":
+                    if (this.args.length() == 2) {
+                        return true;
+                    } else if ("".equals(this.args)) {
+                        return false;
+                    }
+                    break;
+                case "#": {
+                    String[] tokens = this.args.split(" ");
+                    if (tokens.length == 2) {
+                        return Integer.parseInt(tokens[1]);
+                    } else if (tokens.length == 1) {
+                        return -1;
+                    }
+                    break;
                 }
-            } else if (schemaType.equals("#")) {
-                String[] tokens = this.args.split(" ");
-                if (tokens.length == 2) {
-                    return Integer.parseInt(tokens[1]);
-                } else if (tokens.length == 1) {
-                    return -1;
-                }
-            } else if (schemaType.equals("*")) {
-                String[] tokens = this.args.split(" ");
-                if (tokens.length == 2) {
-                    return tokens[1];
-                } else if (tokens[0].equals("")) {
-                    return "";
+                case "*": {
+                    String[] tokens = this.args.split(" ");
+                    if (tokens.length == 2) {
+                        return tokens[1];
+                    } else if (tokens[0].equals("")) {
+                        return "";
+                    }
+                    break;
                 }
             }
         } else {
