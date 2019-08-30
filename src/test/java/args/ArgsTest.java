@@ -89,9 +89,8 @@ class Args {
     }
 
     public Object get(String name) {
-        String schemaType = this.schema2.getType();
         if (this.schema2.getName().equals(name)) {
-            switch (schemaType) {
+            switch (this.schema2.getType()) {
                 case "":
                     if (this.args.length() == 2) {
                         return true;
