@@ -54,4 +54,10 @@ public class ArgsTest {
         Args args = new Args("d*", "");
         assertEquals("", args.get("d"));
     }
+
+    @Test
+    public void should_parse_more_string_arg() {
+        Args args = new Args("s*", "-s abc");
+        assertEquals("abc", args.get("s"));
+    }
 }
