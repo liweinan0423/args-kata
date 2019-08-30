@@ -25,6 +25,11 @@ public class Args {
             } else if (tokens.length == 1) {
                 return -1;
             }
+        } else if (schemaType.equals("*")) {
+            String[] tokens = this.args.split(" ");
+            if (tokens[0].equals("-d")) {
+                return tokens[1];
+            }
         }
         return null;
     }

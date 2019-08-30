@@ -42,4 +42,10 @@ public class ArgsTest {
         Args args = new Args("g#", "-g 80");
         assertEquals(80, args.get("g"));
     }
+
+    @Test
+    public void should_parse_string_arg() {
+        Args args = new Args("d*", "-d /var/logs/");
+        assertEquals("/var/logs/", args.get("d"));
+    }
 }
