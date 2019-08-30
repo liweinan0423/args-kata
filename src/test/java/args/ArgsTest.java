@@ -125,6 +125,16 @@ class Args {
         }
         return null;
     }
+
+    private Object parseString() {
+        String[] tokens = this.args.split(" ");
+        if (tokens.length == 2) {
+            return tokens[1];
+        } else if (tokens[0].equals("")) {
+            return "";
+        }
+        return null;
+    }
 }
 
 class Schema {
