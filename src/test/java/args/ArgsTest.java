@@ -90,7 +90,7 @@ class Args {
 
     public Object get(String name) {
         String schemaName = this.schema2.getName();
-        String schemaType = this.schema.substring(1);
+        String schemaType = this.schema2.getType();
         if (schemaName.equals(name)) {
             switch (schemaType) {
                 case "":
@@ -139,5 +139,9 @@ class Schema {
 
     public String getName() {
         return name;
+    }
+
+    public String getType() {
+        return type;
     }
 }
