@@ -103,7 +103,7 @@ class Args {
 
     private Object parseNumber() {
         String[] tokens = this.args.split(" ");
-        if (tokens.length == 2) {
+        if (tokens[0].startsWith("-")) {
             return Integer.parseInt(tokens[1]);
         } else if (tokens.length == 1) {
             return -1;
