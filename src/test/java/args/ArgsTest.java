@@ -30,4 +30,10 @@ public class ArgsTest {
         Args args = new Args("p#", "-p 8080");
         assertEquals(8080, args.get("p"));
     }
+
+    @Test
+    public void should_parse_number_arg_default_value() {
+        Args args = new Args("p#", "");
+        assertEquals(-1, args.get("p"));
+    }
 }

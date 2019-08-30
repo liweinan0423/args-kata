@@ -22,6 +22,8 @@ public class Args {
             String[] tokens = this.args.split(" ");
             if (tokens.length == 2) {
                 return Integer.parseInt(tokens[1]);
+            } else if (tokens.length == 1) {
+                return -1;
             }
         }
         return null;
