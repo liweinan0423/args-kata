@@ -19,7 +19,7 @@ public class ArgsTest {
     }
 
     @Test
-    public void should_paerse_more_boolean_args() {
+    public void should_parse_more_boolean_args() {
         Args args = new Args("g", "-g");
         assertEquals(true, args.get("g"));
     }
