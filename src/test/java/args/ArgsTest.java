@@ -23,4 +23,11 @@ public class ArgsTest {
         Args args = new Args("g", "-g");
         assertEquals(true, args.get("g"));
     }
+
+
+    @Test
+    public void should_parse_number_arg() {
+        Args args = new Args("p#", "-p 8080");
+        assertEquals(8080, args.get("p"));
+    }
 }

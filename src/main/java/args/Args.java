@@ -11,11 +11,18 @@ public class Args {
     }
 
     public Object get(String name) {
-        if (name.equals(schema)) {
+        String schemaName = this.schema.substring(0, 1);
+        String schemaType = this.schema.substring(1);
+        if (schemaType.equals("")) {
             if (this.args.length() == 2) {
                 return true;
             } else if ("".equals(this.args)) {
                 return false;
+            }
+        } else if (schemaType.equals("#")) {
+            String[] tokens = this.args.split(" ");
+            if (tokens.length == 2) {
+                return Integer.parseInt(tokens[1]);
             }
         }
         return null;
