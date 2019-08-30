@@ -89,7 +89,7 @@ class Args {
     }
 
     public Object get(String name) {
-        String schemaName = this.schema.substring(0, 1);
+        String schemaName = this.schema2.getName();
         String schemaType = this.schema.substring(1);
         if (schemaName.equals(name)) {
             switch (schemaType) {
@@ -135,5 +135,9 @@ class Schema {
 
         this.name = name;
         this.type = type;
+    }
+
+    public String getName() {
+        return name;
     }
 }
