@@ -2,8 +2,6 @@ package args;
 
 import org.junit.Test;
 
-import java.util.Map;
-
 import static org.junit.Assert.assertEquals;
 
 public class ArgsTest {
@@ -71,11 +69,11 @@ public class ArgsTest {
 }
 
 class Args {
-    private final Schema schema2;
+    private final Schema schema;
     private final String args;
 
     public Args(String schema, String args) {
-        this.schema2 = parseSchema(schema);
+        this.schema = parseSchema(schema);
         this.args = args;
     }
 
@@ -86,8 +84,8 @@ class Args {
     }
 
     public Object get(String name) {
-        if (this.schema2.getName().equals(name)) {
-            switch (this.schema2.getType()) {
+        if (this.schema.getName().equals(name)) {
+            switch (this.schema.getType()) {
                 case "":
                     if (this.args.length() == 2) {
                         return true;
