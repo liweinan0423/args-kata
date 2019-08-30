@@ -2,6 +2,9 @@ package args;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 public class ArgsTest {
@@ -69,13 +72,23 @@ public class ArgsTest {
 }
 
 class Args {
+    private final Map<String, String> schema2;
     private String schema;
     private final String args;
 
     public Args(String schema, String args) {
         this.schema = schema;
+        this.schema2 = parseSchema(schema);
 
         this.args = args;
+    }
+
+    private Map<String, String> parseSchema(String raw) {
+        String schemaName = raw.substring(0, 1);
+        String schemaType = raw.substring(1);
+        HashMap<String, String> schema = new HashMap<>();
+        schema.put(schemaName, schemaType);
+        return schema;
     }
 
     public Object get(String name) {
