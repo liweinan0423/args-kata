@@ -72,13 +72,10 @@ public class ArgsTest {
 
 class Args {
     private final Schema schema2;
-    private String schema;
     private final String args;
 
     public Args(String schema, String args) {
-        this.schema = schema;
         this.schema2 = parseSchema(schema);
-
         this.args = args;
     }
 
