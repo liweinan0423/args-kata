@@ -11,7 +11,6 @@ public class Args {
     }
 
     public Object get(String name) {
-        String schemaName = this.schema.substring(0, 1);
         String schemaType = this.schema.substring(1);
         if (schemaType.equals("")) {
             if (this.args.length() == 2) {
