@@ -19,6 +19,12 @@ public class ArgsTest {
     }
 
     @Test
+    public void should_be_null_when_get_undefined_arg() {
+        Args args = new Args("l", "-l");
+        assertEquals(null, args.get("g"));
+    }
+
+    @Test
     public void should_parse_more_boolean_args() {
         Args args = new Args("g", "-g");
         assertEquals(true, args.get("g"));
@@ -73,28 +79,33 @@ class Args {
     }
 
     public Object get(String name) {
+        String schemaName = this.schema.substring(0, 1);
         String schemaType = this.schema.substring(1);
-        if (schemaType.equals("")) {
-            if (this.args.length() == 2) {
-                return true;
-            } else if ("".equals(this.args)) {
-                return false;
+        if (schemaName.equals(name)) {
+            if (schemaType.equals("")) {
+                if (this.args.length() == 2) {
+                    return true;
+                } else if ("".equals(this.args)) {
+                    return false;
+                }
+            } else if (schemaType.equals("#")) {
+                String[] tokens = this.args.split(" ");
+                if (tokens.length == 2) {
+                    return Integer.parseInt(tokens[1]);
+                } else if (tokens.length == 1) {
+                    return -1;
+                }
+            } else if (schemaType.equals("*")) {
+                String[] tokens = this.args.split(" ");
+                if (tokens.length == 2) {
+                    return tokens[1];
+                } else if (tokens[0].equals("")) {
+                    return "";
+                }
             }
-        } else if (schemaType.equals("#")) {
-            String[] tokens = this.args.split(" ");
-            if (tokens.length == 2) {
-                return Integer.parseInt(tokens[1]);
-            } else if (tokens.length == 1) {
-                return -1;
-            }
-        } else if (schemaType.equals("*")) {
-            String[] tokens = this.args.split(" ");
-            if (tokens.length == 2) {
-                return tokens[1];
-            } else if (tokens[0].equals("")) {
-                return "";
-            }
+        } else {
+            return null;
         }
-        return null;
+        throw new RuntimeException();
     }
 }
