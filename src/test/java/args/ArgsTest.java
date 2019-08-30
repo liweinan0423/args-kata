@@ -48,4 +48,10 @@ public class ArgsTest {
         Args args = new Args("d*", "-d /var/logs/");
         assertEquals("/var/logs/", args.get("d"));
     }
+
+    @Test
+    public void should_parse_string_arg_defautl_value() {
+        Args args = new Args("d*", "");
+        assertEquals("", args.get("d"));
+    }
 }
