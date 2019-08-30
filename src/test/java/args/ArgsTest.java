@@ -87,12 +87,7 @@ class Args {
         if (this.schema.getName().equals(name)) {
             switch (this.schema.getType()) {
                 case "":
-                    if (this.args.length() == 2) {
-                        return true;
-                    } else if ("".equals(this.args)) {
-                        return false;
-                    }
-                    break;
+                    return parseBoolean();
                 case "#": {
                     String[] tokens = this.args.split(" ");
                     if (tokens.length == 2) {
@@ -116,6 +111,15 @@ class Args {
             return null;
         }
         throw new RuntimeException();
+    }
+
+    private Object parseBoolean() {
+        if (this.args.length() == 2) {
+            return true;
+        } else if ("".equals(this.args)) {
+            return false;
+        }
+        return null;
     }
 }
 
