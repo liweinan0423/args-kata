@@ -27,7 +27,7 @@ public class Args {
             }
         } else if (schemaType.equals("*")) {
             String[] tokens = this.args.split(" ");
-            if (tokens[0].equals("-d") || tokens[0].equals("-s")) {
+            if (tokens.length == 2) {
                 return tokens[1];
             } else if (tokens[0].equals("")) {
                 return "";
