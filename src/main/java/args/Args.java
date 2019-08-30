@@ -5,8 +5,8 @@ public class Args {
 
     }
 
-    public Object get(String l) {
-        if ("l".equals(l)) {
+    public Object get(String name) {
+        if ("l".equals(name)) {
             return true;
         }
         return null;
