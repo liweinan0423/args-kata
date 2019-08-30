@@ -92,13 +92,7 @@ class Args {
                     return parseNumber();
                 }
                 case "*": {
-                    String[] tokens = this.args.split(" ");
-                    if (tokens.length == 2) {
-                        return tokens[1];
-                    } else if (tokens[0].equals("")) {
-                        return "";
-                    }
-                    break;
+                    return parseString();
                 }
             }
         } else {
