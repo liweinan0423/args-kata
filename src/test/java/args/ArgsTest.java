@@ -120,12 +120,11 @@ class Args {
 
     private Object parseString() {
         String[] tokens = this.args.split(" ");
-        if (tokens.length == 2) {
+        if (tokens[0].startsWith("-")) {
             return tokens[1];
-        } else if (tokens[0].equals("")) {
+        } else {
             return "";
         }
-        return null;
     }
 }
 
