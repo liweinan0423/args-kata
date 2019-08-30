@@ -36,4 +36,10 @@ public class ArgsTest {
         Args args = new Args("p#", "");
         assertEquals(-1, args.get("p"));
     }
+
+    @Test
+    public void should_parse_another_number_arg() {
+        Args args = new Args("g#", "-g 80");
+        assertEquals(80, args.get("g"));
+    }
 }
