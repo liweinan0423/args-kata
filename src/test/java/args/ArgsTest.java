@@ -111,12 +111,11 @@ class Args {
     }
 
     private Object parseBoolean() {
-        if (this.args.length() == 2) {
+        if (this.args.startsWith("-")) {
             return true;
-        } else if ("".equals(this.args)) {
+        } else {
             return false;
         }
-        return null;
     }
 
     private Object parseString() {
