@@ -17,4 +17,10 @@ public class ArgsTest {
         Args args = new Args("l", "");
         assertEquals(false, args.get("l"));
     }
+
+    @Test
+    public void should_paerse_more_boolean_args() {
+        Args args = new Args("g", "-g");
+        assertEquals(true, args.get("g"));
+    }
 }
