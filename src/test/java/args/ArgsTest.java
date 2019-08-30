@@ -105,10 +105,9 @@ class Args {
         String[] tokens = this.args.split(" ");
         if (tokens[0].startsWith("-")) {
             return Integer.parseInt(tokens[1]);
-        } else if (tokens.length == 1) {
+        } else {
             return -1;
         }
-        return null;
     }
 
     private Object parseBoolean() {
