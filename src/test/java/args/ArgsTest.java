@@ -57,7 +57,7 @@ public class ArgsTest {
   }
 
   @Test
-  public void should_parse_string_arg_defautl_value() {
+  public void should_parse_string_arg_default_value() {
     Args args = new Args("d*", "");
     assertEquals("", args.get("d"));
   }
