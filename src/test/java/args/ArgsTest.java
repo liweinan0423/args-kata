@@ -69,7 +69,7 @@ public class ArgsTest {
 }
 
 class Args {
-  private final Schema schema;
+  private final Parser schema;
   private final String args;
 
   public Args(String schema, String args) {
@@ -77,10 +77,10 @@ class Args {
     this.args = args;
   }
 
-  private Schema parseSchema(String raw) {
+  private Parser parseSchema(String raw) {
     String schemaName = raw.substring(0, 1);
     String schemaType = raw.substring(1);
-    return new Schema(schemaName, schemaType);
+    return new Parser(schemaName, schemaType);
   }
 
   public Object get(String name) {
@@ -89,12 +89,16 @@ class Args {
 
 }
 
-class Schema {
+class Parser {
 
   private final String name;
   private final String type;
 
-  public Schema(String name, String type) {
+  static Parser create(String name, String type) {
+    return null;
+  }
+
+  public Parser(String name, String type) {
 
     this.name = name;
     this.type = type;
