@@ -80,7 +80,7 @@ class Args {
   private Parser createParser(String raw) {
     String schemaName = raw.substring(0, 1);
     String schemaType = raw.substring(1);
-    return new Parser(schemaName, schemaType);
+    return Parser.create(schemaName, schemaType);
   }
 
   public Object get(String name) {
