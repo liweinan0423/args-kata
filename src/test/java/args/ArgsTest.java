@@ -3,6 +3,7 @@ package args;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ArgsTest {
 
@@ -21,7 +22,7 @@ public class ArgsTest {
   @Test
   public void should_be_null_when_get_undefined_arg() {
     Args args = new Args("l", "-l");
-    assertEquals(null, args.get("g"));
+    assertNull(args.get("g"));
   }
 
   @Test
@@ -72,7 +73,7 @@ class Args {
   private final Parser parser;
   private final String args;
 
-  public Args(String schema, String args) {
+  Args(String schema, String args) {
     this.parser = createParser(schema);
     this.args = args;
   }
@@ -83,7 +84,7 @@ class Args {
     return Parser.create(schemaName, schemaType);
   }
 
-  public Object get(String name) {
+  Object get(String name) {
     return parser.get(name, args);
   }
 
@@ -105,18 +106,14 @@ abstract class Parser {
     }
   }
 
-  public Parser(String name, String type) {
+  Parser(String name, String type) {
 
     this.name = name;
     this.type = type;
   }
 
-  public String getName() {
+  private String getName() {
     return name;
-  }
-
-  public String getType() {
-    return type;
   }
 
   Object get(String name, String args) {
@@ -137,7 +134,7 @@ abstract class Parser {
 
 class StringParser extends Parser {
 
-  public StringParser(String name, String type) {
+  StringParser(String name, String type) {
     super(name, type);
   }
 
@@ -153,7 +150,7 @@ class StringParser extends Parser {
 
 class NumberParser extends Parser {
 
-  public NumberParser(String name, String type) {
+  NumberParser(String name, String type) {
     super(name, type);
   }
 
@@ -170,7 +167,7 @@ class NumberParser extends Parser {
 
 class BooleanParser extends Parser {
 
-  public BooleanParser(String name, String type) {
+  BooleanParser(String name, String type) {
     super(name, type);
   }
 
