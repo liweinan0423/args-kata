@@ -140,14 +140,6 @@ class Parser {
     }
   }
 
-  Object parseString(String args) {
-    String[] tokens = args.split(" ");
-    if (tokens[0].startsWith("-")) {
-      return tokens[1];
-    } else {
-      return "";
-    }
-  }
 }
 
 class StringParser extends Parser {
@@ -158,7 +150,12 @@ class StringParser extends Parser {
 
   @Override
   Object get(String name, String args) {
-    return super.parseString(args);
+    String[] tokens = args.split(" ");
+    if (tokens[0].startsWith("-")) {
+      return tokens[1];
+    } else {
+      return "";
+    }
   }
 }
 
