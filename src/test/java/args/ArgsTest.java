@@ -101,7 +101,7 @@ abstract class Parser {
       case "*":
         return new StringParser(name);
       default:
-        return new BooleanParser(name, type);
+        return new BooleanParser(name);
     }
   }
 
@@ -164,7 +164,7 @@ class NumberParser extends Parser {
 
 class BooleanParser extends Parser {
 
-  BooleanParser(String name, String type) {
+  BooleanParser(String name) {
     super(name);
   }
 
