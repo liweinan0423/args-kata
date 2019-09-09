@@ -100,7 +100,6 @@ class Args {
     }
   }
 
-  
   private Object parseBoolean() {
     if (this.args.startsWith("-")) {
       return true;
