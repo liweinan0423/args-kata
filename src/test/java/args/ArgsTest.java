@@ -89,7 +89,7 @@ class Args {
 
 }
 
-class Parser {
+abstract class Parser {
 
   private final String name;
   private final String type;
@@ -121,18 +121,15 @@ class Parser {
 
   Object get(String name, String args) {
     if (getName().equals(name)) {
-      switch (this.getType()) {
-        case "":
-          return parseBoolean(args);
-        default:
-          return null;
-      }
+      return doGet(args);
     } else {
       return null;
     }
   }
 
-  private Object parseBoolean(String args) {
+  abstract Object doGet(String args);
+
+  Object parseBoolean(String args) {
     if (args.startsWith("-")) {
       return true;
     } else {
@@ -148,8 +145,7 @@ class StringParser extends Parser {
     super(name, type);
   }
 
-  @Override
-  Object get(String name, String args) {
+  Object doGet(String args) {
     String[] tokens = args.split(" ");
     if (tokens[0].startsWith("-")) {
       return tokens[1];
@@ -166,7 +162,7 @@ class NumberParser extends Parser {
   }
 
   @Override
-  Object get(String name, String args) {
+  Object doGet(String args) {
     String[] tokens = args.split(" ");
     if (tokens[0].startsWith("-")) {
       return Integer.parseInt(tokens[1]);
@@ -180,5 +176,10 @@ class BooleanParser extends Parser {
 
   public BooleanParser(String name, String type) {
     super(name, type);
+  }
+
+  @Override
+  Object doGet(String args) {
+    return super.parseBoolean(args);
   }
 }
