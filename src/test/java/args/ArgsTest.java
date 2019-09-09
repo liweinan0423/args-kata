@@ -69,22 +69,22 @@ public class ArgsTest {
 }
 
 class Args {
-  private final Parser schema;
+  private final Parser parser;
   private final String args;
 
   public Args(String schema, String args) {
-    this.schema = parseSchema(schema);
+    this.parser = createParser(schema);
     this.args = args;
   }
 
-  private Parser parseSchema(String raw) {
+  private Parser createParser(String raw) {
     String schemaName = raw.substring(0, 1);
     String schemaType = raw.substring(1);
     return new Parser(schemaName, schemaType);
   }
 
   public Object get(String name) {
-    return schema.get(name, args);
+    return parser.get(name, args);
   }
 
 }
