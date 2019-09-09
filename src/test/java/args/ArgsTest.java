@@ -84,15 +84,7 @@ class Args {
   }
 
   public Object get(String name) {
-    return getFromSchema(name, args);
-  }
-
-  private Object getFromSchema(String name, String args) {
-    if (schema.canParse(name, this)) {
-      return this.schema.parseArgs(args);
-    } else {
-      return null;
-    }
+    return schema.get(name, args);
   }
 
 }
@@ -157,7 +149,15 @@ class Schema {
     }
   }
 
-  boolean canParse(String name, Args args) {
+  boolean canParse(String name) {
     return getName().equals(name);
+  }
+
+  Object get(String name, String args) {
+    if (canParse(name)) {
+      return parseArgs(args);
+    } else {
+      return null;
+    }
   }
 }
