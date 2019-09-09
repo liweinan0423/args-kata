@@ -90,32 +90,6 @@ class Args {
       return null;
     }
   }
-
-  private Object parseNumber() {
-    String[] tokens = this.args.split(" ");
-    if (tokens[0].startsWith("-")) {
-      return Integer.parseInt(tokens[1]);
-    } else {
-      return -1;
-    }
-  }
-
-  private Object parseBoolean() {
-    if (this.args.startsWith("-")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  private Object parseString() {
-    String[] tokens = this.args.split(" ");
-    if (tokens[0].startsWith("-")) {
-      return tokens[1];
-    } else {
-      return "";
-    }
-  }
 }
 
 class Schema {
