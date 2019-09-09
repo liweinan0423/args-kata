@@ -155,7 +155,7 @@ class Parser {
     }
   }
 
-  private Object parseString(String args) {
+  Object parseString(String args) {
     String[] tokens = args.split(" ");
     if (tokens[0].startsWith("-")) {
       return tokens[1];
@@ -169,6 +169,11 @@ class StringParser extends Parser {
 
   public StringParser(String name, String type) {
     super(name, type);
+  }
+
+  @Override
+  Object get(String name, String args) {
+    return super.parseString(args);
   }
 }
 
