@@ -84,12 +84,17 @@ class Args {
   }
 
   public Object get(String name) {
-    if (this.schema.getName().equals(name)) {
+    return getFromSchema(name, args);
+  }
+
+  private Object getFromSchema(String name, String args) {
+    if (schema.canParse(name, this)) {
       return this.schema.parseArgs(args);
     } else {
       return null;
     }
   }
+
 }
 
 class Schema {
@@ -152,4 +157,7 @@ class Schema {
     }
   }
 
+  boolean canParse(String name, Args args) {
+    return getName().equals(name);
+  }
 }
