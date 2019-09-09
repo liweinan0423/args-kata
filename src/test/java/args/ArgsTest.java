@@ -124,9 +124,6 @@ class Parser {
       switch (this.getType()) {
         case "":
           return parseBoolean(args);
-        case "#": {
-          return parseNumber(args);
-        }
         default:
           return null;
       }
