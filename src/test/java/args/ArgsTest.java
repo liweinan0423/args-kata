@@ -95,7 +95,14 @@ class Parser {
   private final String type;
 
   static Parser create(String name, String type) {
-    return null;
+    switch (type) {
+      case "#":
+        return new NumberParser(name, type);
+      case "*":
+        return new StringParser(name, type);
+      default:
+        return new BooleanParser(name, type);
+    }
   }
 
   public Parser(String name, String type) {
@@ -155,5 +162,26 @@ class Parser {
     } else {
       return "";
     }
+  }
+}
+
+class StringParser extends Parser {
+
+  public StringParser(String name, String type) {
+    super(name, type);
+  }
+}
+
+class NumberParser extends Parser {
+
+  public NumberParser(String name, String type) {
+    super(name, type);
+  }
+}
+
+class BooleanParser extends Parser {
+
+  public BooleanParser(String name, String type) {
+    super(name, type);
   }
 }
