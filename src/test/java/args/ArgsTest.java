@@ -99,7 +99,7 @@ abstract class Parser {
       case "#":
         return new NumberParser(name);
       case "*":
-        return new StringParser(name, type);
+        return new StringParser(name);
       default:
         return new BooleanParser(name, type);
     }
@@ -131,7 +131,7 @@ abstract class Parser {
 
 class StringParser extends Parser {
 
-  StringParser(String name, String type) {
+  StringParser(String name) {
     super(name);
   }
 
