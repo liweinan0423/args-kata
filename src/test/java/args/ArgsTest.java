@@ -97,7 +97,7 @@ abstract class Parser {
   static Parser create(String name, String type) {
     switch (type) {
       case "#":
-        return new NumberParser(name, type);
+        return new NumberParser(name);
       case "*":
         return new StringParser(name, type);
       default:
@@ -147,7 +147,7 @@ class StringParser extends Parser {
 
 class NumberParser extends Parser {
 
-  NumberParser(String name, String type) {
+  NumberParser(String name) {
     super(name);
   }
 
