@@ -130,11 +130,7 @@ abstract class Parser {
   abstract Object doGet(String args);
 
   Object parseBoolean(String args) {
-    if (args.startsWith("-")) {
-      return true;
-    } else {
-      return false;
-    }
+    return args.startsWith("-");
   }
 
 }
