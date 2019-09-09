@@ -135,7 +135,7 @@ class Parser {
     }
   }
 
-  private Object parseNumber(String args) {
+  Object parseNumber(String args) {
     String[] tokens = args.split(" ");
     if (tokens[0].startsWith("-")) {
       return Integer.parseInt(tokens[1]);
@@ -178,6 +178,11 @@ class NumberParser extends Parser {
 
   public NumberParser(String name, String type) {
     super(name, type);
+  }
+
+  @Override
+  Object get(String name, String args) {
+    return super.parseNumber(args);
   }
 }
 
