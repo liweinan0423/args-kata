@@ -132,15 +132,6 @@ class Parser {
     }
   }
 
-  Object parseNumber(String args) {
-    String[] tokens = args.split(" ");
-    if (tokens[0].startsWith("-")) {
-      return Integer.parseInt(tokens[1]);
-    } else {
-      return -1;
-    }
-  }
-
   private Object parseBoolean(String args) {
     if (args.startsWith("-")) {
       return true;
@@ -179,7 +170,12 @@ class NumberParser extends Parser {
 
   @Override
   Object get(String name, String args) {
-    return super.parseNumber(args);
+    String[] tokens = args.split(" ");
+    if (tokens[0].startsWith("-")) {
+      return Integer.parseInt(tokens[1]);
+    } else {
+      return -1;
+    }
   }
 }
 
