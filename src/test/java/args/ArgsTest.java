@@ -108,6 +108,25 @@ class Schema {
     return type;
   }
 
+  Object get(String name, String args) {
+    if (getName().equals(name)) {
+      switch (this.getType()) {
+        case "":
+          return parseBoolean(args);
+        case "#": {
+          return parseNumber(args);
+        }
+        case "*": {
+          return parseString(args);
+        }
+        default:
+          return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
   private Object parseNumber(String args) {
     String[] tokens = args.split(" ");
     if (tokens[0].startsWith("-")) {
@@ -131,25 +150,6 @@ class Schema {
       return tokens[1];
     } else {
       return "";
-    }
-  }
-
-  Object get(String name, String args) {
-    if (getName().equals(name)) {
-      switch (this.getType()) {
-        case "":
-          return parseBoolean(args);
-        case "#": {
-          return parseNumber(args);
-        }
-        case "*": {
-          return parseString(args);
-        }
-        default:
-          return null;
-      }
-    } else {
-      return null;
     }
   }
 }
