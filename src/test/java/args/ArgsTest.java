@@ -127,9 +127,6 @@ class Parser {
         case "#": {
           return parseNumber(args);
         }
-        case "*": {
-          return parseString(args);
-        }
         default:
           return null;
       }
