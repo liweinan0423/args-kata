@@ -93,7 +93,6 @@ class Args {
 abstract class Parser {
 
   private final String name;
-  private final String type;
 
   static Parser create(String name, String type) {
     switch (type) {
@@ -106,10 +105,8 @@ abstract class Parser {
     }
   }
 
-  Parser(String name, String type) {
-
+  Parser(String name) {
     this.name = name;
-    this.type = type;
   }
 
   private String getName() {
@@ -135,7 +132,7 @@ abstract class Parser {
 class StringParser extends Parser {
 
   StringParser(String name, String type) {
-    super(name, type);
+    super(name);
   }
 
   Object doGet(String args) {
@@ -151,7 +148,7 @@ class StringParser extends Parser {
 class NumberParser extends Parser {
 
   NumberParser(String name, String type) {
-    super(name, type);
+    super(name);
   }
 
   @Override
@@ -168,7 +165,7 @@ class NumberParser extends Parser {
 class BooleanParser extends Parser {
 
   BooleanParser(String name, String type) {
-    super(name, type);
+    super(name);
   }
 
   @Override
