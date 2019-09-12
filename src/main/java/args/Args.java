@@ -27,7 +27,7 @@ class Args {
     if (parser == null) {
       return null;
     }
-    return parser.get(name, args);
+    return parser.get(args);
   }
 
 }
