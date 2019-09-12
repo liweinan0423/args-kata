@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Args {
-  private final Parser parser;
   private final String args;
   private final Map<String, Parser> parsers = new HashMap<>();
 
@@ -14,7 +13,6 @@ class Args {
       Parser parser = createParser(token);
       this.parsers.put(parser.getName(), parser);
     }
-    this.parser = createParser(schema);
     this.args = args;
   }
 
