@@ -88,4 +88,12 @@ public class ArgsTest {
     assertEquals(8080, args.get("p"));
     assertEquals("", args.get("d"));
   }
+
+  @Test
+  public void should_parse_default_number_and_string_args() {
+    Args args = new Args("p#,d*", "-d abc");
+    assertEquals(-1, args.get("p"));
+    assertEquals("abc", args.get("d"));
+  }
+
 }
