@@ -6,6 +6,11 @@ class StringParser extends Parser {
     super(name);
   }
 
+  @Override
+  protected Object doGetDefaultVal() {
+    return "";
+  }
+
   Object doGet(String args) {
     String[] tokens = args.split(" ");
     for (int i = 0; i < tokens.length; i++) {

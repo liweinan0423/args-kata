@@ -24,12 +24,16 @@ abstract class Parser {
   }
 
   Object get(String name, String args) {
-    if (getName().equals(name)) {
-      return doGet(args);
-    } else {
-      return null;
+    String[] tokens = args.split(" ");
+    for (int i = 0; i < tokens.length; i++) {
+      if (tokens[i].startsWith("-") && tokens[i].substring(1).equals(getName())) {
+        return doGet(args);
+      }
     }
+    return doGetDefaultVal();
   }
+
+  protected abstract Object doGetDefaultVal();
 
   abstract Object doGet(String args);
 

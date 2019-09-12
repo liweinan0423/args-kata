@@ -7,6 +7,11 @@ class BooleanParser extends Parser {
   }
 
   @Override
+  protected Object doGetDefaultVal() {
+    return false;
+  }
+
+  @Override
   Object doGet(String args) {
     return super.parseBoolean(args);
   }
