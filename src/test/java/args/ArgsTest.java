@@ -67,5 +67,12 @@ public class ArgsTest {
     Args args = new Args("s*", "-s abc");
     assertEquals("abc", args.get("s"));
   }
+
+  @Test
+  public void should_parse_number_and_string_args() {
+    Args args = new Args("p#,d*", "-p 8080 -d /var/logs/");
+    assertEquals(8080, args.get("p"));
+    assertEquals("/var/logs/", args.get("d"));
+  }
 }
 

@@ -8,10 +8,11 @@ class StringParser extends Parser {
 
   Object doGet(String args) {
     String[] tokens = args.split(" ");
-    if (tokens[0].startsWith("-")) {
-      return tokens[1];
-    } else {
-      return "";
+    for (int i = 0; i < tokens.length; i++) {
+      if (tokens[i].startsWith("-") && tokens[i].substring(1).equals(getName())) {
+        return tokens[i + 1];
+      }
     }
+    return "";
   }
 }

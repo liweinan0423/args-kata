@@ -1,10 +1,19 @@
 package args;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Args {
   private final Parser parser;
   private final String args;
+  private final Map<String, Parser> parsers = new HashMap<>();
 
   Args(String schema, String args) {
+    String[] tokens = schema.split(",");
+    for (String token : tokens) {
+      Parser parser = createParser(token);
+      this.parsers.put(parser.getName(), parser);
+    }
     this.parser = createParser(schema);
     this.args = args;
   }
@@ -16,6 +25,10 @@ class Args {
   }
 
   Object get(String name) {
+    Parser parser = parsers.get(name);
+    if (parser == null) {
+      return null;
+    }
     return parser.get(name, args);
   }
 
