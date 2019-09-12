@@ -74,5 +74,13 @@ public class ArgsTest {
     assertEquals(8080, args.get("p"));
     assertEquals("/var/logs/", args.get("d"));
   }
+
+  @Test
+  public void should_parse_string_and_number_args() {
+    Args args = new Args("p#,d*", "-d /var/logs/ -p 8080 ");
+    assertEquals(8080, args.get("p"));
+    assertEquals("/var/logs/", args.get("d"));
+  }
+
 }
 

@@ -9,10 +9,11 @@ class NumberParser extends Parser {
   @Override
   Object doGet(String args) {
     String[] tokens = args.split(" ");
-    if (tokens[0].startsWith("-")) {
-      return Integer.parseInt(tokens[1]);
-    } else {
-      return -1;
+    for (int i = 0; i < tokens.length; i++) {
+      if (tokens[i].startsWith("-") && tokens[i].substring(1).equals(getName())) {
+        return Integer.parseInt(tokens[i + 1]);
+      }
     }
+    return -1;
   }
 }
