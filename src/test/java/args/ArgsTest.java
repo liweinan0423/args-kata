@@ -86,5 +86,6 @@ public class ArgsTest {
   public void should_parse_number_and_default_string_args() {
     Args args = new Args("p#,d*", "-p 8080");
     assertEquals(8080, args.get("p"));
+    assertEquals("", args.get("d"));
   }
 }
