@@ -13,6 +13,6 @@ class BooleanParser extends Parser {
 
   @Override
   Object doGet(String args) {
-    return super.parseBoolean(args);
+    return args.startsWith("-");
   }
 }

@@ -37,8 +37,4 @@ abstract class Parser {
 
   abstract Object doGet(String args);
 
-  Object parseBoolean(String args) {
-    return args.startsWith("-");
-  }
-
 }
